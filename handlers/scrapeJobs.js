@@ -37,7 +37,7 @@ module.exports = async (req, res, next) => {
     // wait for table to load
     await page.waitForSelector("#vacancyTable");
     // expand page length to X results
-    await page.select("select#dt-length-0", "10");
+    await page.select("select#dt-length-0", "50");
     // sort page by date
     const sortByDate = await page.$(`th[data-dt-column="3"]`);
     await sortByDate.click();
@@ -50,7 +50,7 @@ module.exports = async (req, res, next) => {
       }
     );
     // loop through every vacancy ID
-    for (let id of vacanciesIds) {
+    for (let id of vacanciesIds.slice(0, 30)) {
       console.log("checking jobs");
       let job = {};
       // go to vacancy id
