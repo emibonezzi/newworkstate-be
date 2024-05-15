@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const app = express();
 const routes = require("./routes");
 
@@ -10,5 +11,5 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong", message: err.message });
 });
 
-const port = process.env.PORT || 9000;
-app.listen(port, () => console.log("Listening on port...", port));
+// Export the Express app wrapped in serverless-http
+module.exports.handler = serverless(app);

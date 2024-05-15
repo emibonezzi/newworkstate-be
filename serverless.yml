@@ -1,0 +1,20 @@
+service: newworkstate-be
+
+provider:
+  name: aws
+  runtime: nodejs18.x # Update to Node.js 18
+  region: us-east-1
+
+functions:
+  app:
+    handler: index.handler
+    timeout: 30 # Increase timeout
+    memorySize: 10240 # Set the memory allocation
+    events:
+      - http:
+          path: /jobs
+          method: get
+      # If you have more routes, you can add them here
+      # - http:
+      #     path: /another-route
+      #     method: get
