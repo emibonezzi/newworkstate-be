@@ -20,6 +20,11 @@ const importantLabels = [
   "Email Address",
 ];
 const jobs = [];
+const headers = {
+  "Access-Control-Allow-Origin": "*", // Allow from any origin
+  "Access-Control-Allow-Methods": "GET, OPTIONS", // Allow specific methods
+  "Access-Control-Allow-Headers": "Content-Type", // Allow specific headers
+};
 
 module.exports = async (req, res, next) => {
   console.log("Initializing browser...");
@@ -116,7 +121,7 @@ module.exports = async (req, res, next) => {
     }
     console.log("Reached the end");
     // send response
-    res.json(jobs);
+    res.set(headers).json(jobs);
   } catch (err) {
     // pass err to error middleware
     console.log(err);

@@ -14,6 +14,7 @@ functions:
       - http:
           path: /jobs
           method: get
+          cors: true
       # If you have more routes, you can add them here
       # - http:
       #     path: /another-route
