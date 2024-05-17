@@ -94,8 +94,11 @@ module.exports = async (req, res, next) => {
             }
           });
           const valueEl = await row.$(".rightCol");
-          const valueText = await valueEl.evaluate((value) => {
-            if (value.textContent.split("").includes("$")) {
+          let valueText;
+          // if field is salary range
+          if (labelText === "Salary Range") {
+            // return obj with salary props
+            valueText = await valueEl.evaluate((value) => {
               return {
                 type: value.textContent.split(" ").includes("Hourly")
                   ? "Hourly"
@@ -105,9 +108,13 @@ module.exports = async (req, res, next) => {
                   .split(/\D+/g)
                   .filter((i) => i !== "")[1],
               };
-            }
-            return value.textContent.trim();
-          });
+            });
+          } else {
+            // just return text
+            valueText = await valueEl.evaluate((value) => {
+              return value.textContent.trim();
+            });
+          }
 
           // only return selected field
           if (importantLabels.includes(labelText)) {
