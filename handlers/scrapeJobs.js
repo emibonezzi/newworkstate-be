@@ -3,7 +3,6 @@ const chromium = require("@sparticuz/chromium");
 const baseURL = "https://statejobs.ny.gov/public/vacancyTable.cfm";
 const baseJobURL = "https://statejobs.ny.gov/public/vacancyDetailsView.cfm?id=";
 const importantLabels = [
-  "Agency",
   "Title",
   "Occupational Category",
   "Salary Range",
@@ -19,9 +18,6 @@ const importantLabels = [
   "Name",
   "Telephone",
   "Email Address",
-  "Minimum Qualifications",
-  "Duties Description",
-  "Notes on Applying",
 ];
 const jobs = [];
 const headers = {
