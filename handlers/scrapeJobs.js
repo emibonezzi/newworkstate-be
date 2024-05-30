@@ -59,7 +59,7 @@ module.exports = async (req, res, next) => {
       }
     );
     // loop through every vacancy ID
-    for (let id of vacanciesIds.slice(0, 30)) {
+    for (let id of vacanciesIds.slice(0, 15)) {
       console.log("checking jobs");
       let job = {};
       // go to vacancy id
